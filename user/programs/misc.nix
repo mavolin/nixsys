@@ -14,10 +14,6 @@
       gnome.aisleriot
       any-nix-shell
       apostrophe
-      aspell
-      aspellDicts.de
-      aspellDicts.en
-      aspellDicts.en-computers
       biber # for texlive/biblatex
       blackbox-terminal
       gnome.gnome-chess
@@ -44,10 +40,6 @@
       golangci-lint
       gparted
       gthumb
-      hunspell
-      hunspellDicts.de_DE
-      hunspellDicts.en_GB-large
-      hunspellDicts.en_US
       inkscape
       pstoedit # latter for opening .eps
       jdk17
