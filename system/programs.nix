@@ -4,6 +4,15 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    aspell
+    aspellDicts.de
+    aspellDicts.en
+    aspellDicts.en-computers
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_GB-large
+    hunspellDicts.en_US
+
     samba
   ];
 
