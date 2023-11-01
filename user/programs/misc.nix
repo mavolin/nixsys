@@ -15,6 +15,7 @@
       any-nix-shell
       apostrophe
       biber # for texlive/biblatex
+      bluej # for uni, rm when we're done w/ that
       blackbox-terminal
       gnome.gnome-chess
       ciano # converter
