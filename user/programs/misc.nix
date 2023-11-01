@@ -77,7 +77,7 @@
       playonlinux
       wl-clipboard # for emote
       xdotool
-      zoom
+      zoom-us
 
       nautilus-open-any-terminal
     ])
