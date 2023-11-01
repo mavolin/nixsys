@@ -25,6 +25,7 @@
       ll = "ls -l";
       la = "ls -A";
       p = "gping";
+      dog = "dog A AAAA";
     };
   };
 
