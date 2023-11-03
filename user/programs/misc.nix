@@ -139,6 +139,7 @@
     extensions = [
       {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # dark reader
       {id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa";} # 1password
+      {id = "nffaoalbilbmmfgbnbgppjihopabppdk";} # video speed controller
     ];
   };
 
