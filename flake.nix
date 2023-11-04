@@ -7,18 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    tuxedo-nixos = {
-      url = "github:blitz/tuxedo-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    tuxedo-nixos,
   } @ inputs: let
     # Change base.nix to edit the most common settings.
     base = import ./base.nix;
@@ -32,7 +26,6 @@
         inherit specialArgs;
         modules = [
           ./system/configuration.nix
-          tuxedo-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {

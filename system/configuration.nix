@@ -20,14 +20,13 @@
     experimental-features = ["nix-command" "flakes"];
   };
 
-  # for some reason, this needs to stay together (or at the very
-  # least in the same file). if permittedInsecurePackages is moved
-  # to the location where it's used (tuxedo.nix), it, for reasons
-  # beyond me, won't get applied.
   nixpkgs.config = {
     allowUnfree = true;
-    # needed for tuxedo control center
-    permittedInsecurePackages = ["openssl-1.1.1w" "nodejs-14.21.3" "electron-13.6.9"];
+    permittedInsecurePackages = [
+      # there isn't even a fix upstream yet,
+      # since i need this for work, imma just ignore
+      "figma-linux-0.10.0"
+    ];
   };
 
   boot = {
@@ -69,7 +68,10 @@
     };
   };
 
-  powerManagement.enable = true;
+  powerManagement = {
+    enable = true;
+    cpufreq.max = 3000000;
+  };
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = true;
   services.thermald.enable = true;
