@@ -43,7 +43,6 @@
       gthumb
       inkscape
       pstoedit # latter for opening .eps
-      jdk17
       john
       libsForQt5.kdenlive
       less
