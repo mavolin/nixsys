@@ -62,6 +62,7 @@
       powertop
       killall
       gnome.quadrapassel
+      rustdesk # for work
       samba
       scc
       signal-desktop
