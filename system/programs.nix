@@ -29,9 +29,4 @@
   };
 
   services.dbus.enable = true;
-
-  environment.etc."samba/smb.conf".text = ''
-    [global]
-    client min protocol = NT1
-  '';
 }

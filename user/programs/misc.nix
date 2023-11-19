@@ -9,90 +9,78 @@
   #### PROGRAMS ####
   ##################
 
-  home.packages =
-    (with pkgs; [
-      gnome.aisleriot
-      any-nix-shell
-      apostrophe
-      biber # for texlive/biblatex
-      bluej # for uni, rm when we're done w/ that
-      blackbox-terminal
-      gnome.gnome-chess
-      ciano # converter
-      contrast
-      collision # hash checker
-      gnome.dconf-editor
-      ddrescue
-      discord
-      drawing
-      drawio
-      emote
-      figma-linux
-      figma-agent
-      filezilla
-      fortune # fortune cookie message cli
-      # lorem # to be merged https://github.com/NixOS/nixpkgs/issues/195280
-      geogebra6
-      gimp
-      gnumake
-      go
-      gotools
-      gofumpt
-      golangci-lint
-      gparted
-      gthumb
-      inkscape
-      pstoedit # latter for opening .eps
-      john
-      libsForQt5.kdenlive
-      less
-      libreoffice-fresh
-      gnome.gnome-mahjongg
-      meld
-      minder
-      gnome.gnome-nettool
-      # nordvpn # todo: replace with nordvpn as soon as merged
-      notion-app-enhanced
-      gnome-obfuscate # blur data in images, pdfs etc
-      pdfslicer
-      peek # gif recorder
-      pick-colour-picker
-      popsicle # usb flasher, since gnome's impression isn't in nixpkgs
-      powertop
-      killall
-      gnome.quadrapassel
-      rustdesk # for work
-      samba
-      scc
-      signal-desktop
-      spotify
-      gnome.gnome-sudoku
-      gnome.sushi # nautilus file preview
-      tldr
-      ungoogled-chromium
-      ventoy
-      video-trimmer
-      wineWowPackages.stable
-      winetricks
-      playonlinux
-      wl-clipboard # for emote
-      xdotool
-      zoom-us
+  home.packages = with pkgs; [
+    gnome.aisleriot
+    any-nix-shell
+    apostrophe
+    biber # for texlive/biblatex
+    bluej # for uni, rm when we're done w/ that
+    blackbox-terminal
+    gnome.gnome-chess
+    ciano # converter
+    contrast
+    collision # hash checker
+    gnome.dconf-editor
+    ddrescue
+    discord
+    drawing
+    drawio
+    emote
+    figma-linux
+    figma-agent
+    filezilla
+    fortune # fortune cookie message cli
+    # lorem # to be merged https://github.com/NixOS/nixpkgs/issues/195280
+    geogebra6
+    gimp
+    gnumake
+    go
+    gotools
+    gofumpt
+    golangci-lint
+    gparted
+    gthumb
+    inkscape
+    pstoedit # dep of inkscape, for opening .eps
+    jellyfin-media-player
+    john
+    libsForQt5.kdenlive
+    less
+    libreoffice-fresh
+    gnome.gnome-mahjongg
+    meld
+    minder
+    gnome.gnome-nettool
+    # nordvpn # todo: replace with nordvpn as soon as merged
+    notion-app-enhanced
+    gnome-obfuscate # blur data in images, pdfs etc
+    pdfslicer
+    peek # gif recorder
+    pick-colour-picker
+    popsicle # usb flasher, since gnome's impression isn't in nixpkgs
+    powertop
+    killall
+    gnome.quadrapassel
+    rustdesk # for work
+    samba
+    scc
+    signal-desktop
+    spotify
+    gnome.gnome-sudoku
+    gnome.sushi # nautilus file preview
+    tldr
+    ungoogled-chromium
+    ventoy
+    video-trimmer
+    wineWowPackages.stable
+    winetricks
+    playonlinux
+    wl-clipboard # for emote
+    xdotool
+    zoom-us
 
-      nautilus-open-any-terminal
-    ])
-    ++ (with pkgs.jetbrains; let
-      addPlugins = ide: extra:
-        plugins.addPlugins ide (["github-copilot"] ++ extra);
-    in [
-      (addPlugins clion [])
-      (addPlugins datagrip [])
-      (addPlugins goland [])
-      (addPlugins idea-ultimate [])
-      (addPlugins phpstorm [])
-      (addPlugins rust-rover [])
-      (addPlugins webstorm [])
-    ]);
+    nautilus-open-any-terminal
+  ];
 
   #### PROGRAM OPTIONS ####
 
@@ -152,14 +140,6 @@
     package = pkgs.firefox-wayland;
   };
   home.sessionVariables.MOZ_ENABLE_WAYLAND = 1;
-
-  programs.ssh = {
-    enable = true;
-    extraConfig = ''
-      Host *
-       IdentityAgent ~/.1password/agent.sock
-    '';
-  };
 
   programs.texlive = {
     enable = true;

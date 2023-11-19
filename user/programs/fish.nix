@@ -25,11 +25,16 @@
 
         # so nix let's us use the git-settings.nix file
         mv user/programs/.gitignore user/programs/.gitignore.old
+        git add user/programs/borgmatic_enc_passphrase
+        git add user/programs/borgmatic_ntfy_passwd
         git add user/programs/git-settings.nix
+
 
         sudo nixos-rebuild switch --flake .
 
         mv user/programs/.gitignore.old user/programs/.gitignore
+        git reset user/programs/borgmatic_enc_passphrase --quiet
+        git reset user/programs/borgmatic_ntfy_passwd --quiet
         git reset user/programs/git-settings.nix --quiet
 
         popd
