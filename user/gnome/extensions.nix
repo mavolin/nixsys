@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs.gnomeExtensions; [
-    appindicator
     backslide
     caffeine
     force-quit
@@ -17,7 +16,6 @@
       disable-user-extensions = false;
 
       enabled-extensions = [
-        "appindicatorsupport@rgcjonas.gmail.com"
         "backslide@codeisland.org"
         "caffeine@patapon.info"
         "fq@megh"
