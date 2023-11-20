@@ -5,5 +5,6 @@
     ./gnome.nix
     ./pipewire.nix
     ./tuxedo.nix
+    ./virtualbox.nix
   ];
 }
