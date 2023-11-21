@@ -13,8 +13,8 @@
       sdocker = "sudo systemctl start docker.service";
 
       sshx = "ssh root@x-lan.de";
-      sshhh = "ssh root@portainer.hh.mavolin.co";
-      sshco = "ssh root@mavolin.co";
+      sshr = "ssh root@rocketman.mavolin.co";
+      sshm = "ssh root@moonrover.mavolin.co";
     };
 
     functions = {
