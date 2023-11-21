@@ -32,6 +32,7 @@
           };
         };
         retention = {
+          keepHourly = 24;
           keepDaily = 7;
           keepWeekly = 4;
           keepMonthly = 3;
@@ -74,7 +75,7 @@
                   tags = "rotating_light";
                   priority = "high";
                 };
-                states = [ "start" "finish" "fail" ];
+                states = ["start" "finish" "fail"];
               };
             }
           );
@@ -84,6 +85,8 @@
 
   services.borgmatic = {
     enable = true;
-    frequency = "*-*-* 04:00:00";
+    # The backup will only run if connected to the power supply.
+    # Therefore, just run it every hour.
+    frequency = "hourly";
   };
 }
