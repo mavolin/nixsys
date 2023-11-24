@@ -41,10 +41,11 @@
     pkgs.gnome-tour
     pkgs.gnome-console
     pkgs.gnome-photos
-    epiphany
     gnome-contacts
-    gnome-weather
     gnome-disk-utility
+    epiphany
+    totem
+    gnome-weather
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
 }

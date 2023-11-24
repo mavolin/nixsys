@@ -44,6 +44,7 @@
     pstoedit # dep of inkscape, for opening .eps
     jellyfin-media-player
     john
+    killall
     libsForQt5.kdenlive
     less
     libreoffice-fresh
@@ -59,7 +60,6 @@
     pick-colour-picker
     popsicle # usb flasher, since gnome's impression isn't in nixpkgs
     powertop
-    killall
     gnome.quadrapassel
     rustdesk # for work
     samba
@@ -71,6 +71,7 @@
     tldr
     ungoogled-chromium
     ventoy
+    vlc
     video-trimmer
     wineWowPackages.stable
     winetricks
