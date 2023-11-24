@@ -61,13 +61,13 @@
                   title = "${base.hostname}: Backup started";
                   message = "Started backup to ${base.backup.host}::${base.backup.repository}";
                   tags = "floppy_disk";
-                  priority = "default";
+                  priority = "low";
                 };
                 finish = {
                   title = "${base.hostname}: Backup finished";
                   message = "Finished backup up to ${base.backup.host}::${base.backup.repository}";
                   tags = "white_check_mark";
-                  priority = "default";
+                  priority = "low";
                 };
                 fail = {
                   title = "${base.hostname}: Backup failed";
@@ -75,7 +75,7 @@
                   tags = "rotating_light";
                   priority = "high";
                 };
-                states = ["start" "finish" "fail"];
+                states = ["finish" "fail"];
               };
             }
           );
