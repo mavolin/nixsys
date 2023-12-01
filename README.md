@@ -1,5 +1,5 @@
 <div align="center">
-<h1>corgi</h1>
+<h1>nixsys</h1>
 
 [![License MIT](https://img.shields.io/github/license/mavolin/nixsys)](./LICENSE)
 </div>
