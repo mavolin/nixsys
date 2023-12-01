@@ -40,6 +40,7 @@
     golangci-lint
     gparted
     gthumb
+    impression
     inkscape
     pstoedit # dep of inkscape, for opening .eps
     jellyfin-media-player
@@ -58,7 +59,6 @@
     pdfslicer
     peek # gif recorder
     pick-colour-picker
-    popsicle # usb flasher, since gnome's impression isn't in nixpkgs
     powertop
     gnome.quadrapassel
     rustdesk # for work
