@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
 
     ./fonts.nix
+    ./hardware-acceleration.nix
     ./i18n.nix
     ./programs.nix
     ./services

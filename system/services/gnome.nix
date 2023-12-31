@@ -47,5 +47,5 @@
     totem
     gnome-weather
   ];
-  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
+  #environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
 }
