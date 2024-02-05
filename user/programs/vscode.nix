@@ -1,14 +1,14 @@
-{pkgs, ...}: {
+{unstable-pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = unstable-pkgs.vscodium;
 
-    extensions = with pkgs.vscode-extensions;
+    extensions = with unstable-pkgs.vscode-extensions;
       [
         github.copilot
         nvarner.typst-lsp
       ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ++ unstable-pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "intellij-idea-keybindings";
           publisher = "k--kato";

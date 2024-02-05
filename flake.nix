@@ -2,9 +2,10 @@
   description = "mavolin's nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -12,13 +13,25 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
   } @ inputs: let
     # Change base.nix to edit the most common settings.
     base = import ./base.nix;
-    specialArgs = inputs // {inherit base;};
+    unstable-pkgs = import nixpkgs-unstable {
+      inherit (base) system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+    specialArgs =
+      inputs
+      // {
+        inherit base;
+        inherit unstable-pkgs;
+      };
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.alejandra;
 
     nixosConfigurations = {
       ${base.hostname} = nixpkgs.lib.nixosSystem {

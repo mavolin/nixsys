@@ -23,11 +23,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      # there isn't even a fix upstream yet,
-      # since i need this for work, imma just ignore
-      "figma-linux-0.10.0"
-    ];
   };
 
   boot = {
