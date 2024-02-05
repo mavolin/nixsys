@@ -28,6 +28,7 @@
       meslo-lg
       merriweather
       merriweather-sans
+      noto-fonts-monochrome-emoji
       open-sans
       roboto
       roboto-slab

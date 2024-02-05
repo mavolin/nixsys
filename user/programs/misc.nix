@@ -1,6 +1,6 @@
 {
   base,
-  pkgs,
+  pkgs, unstable-pkgs,
   config,
   lib,
   ...
@@ -13,13 +13,12 @@
     gnome.aisleriot
     any-nix-shell
     apostrophe
-    biber # for texlive/biblatex
     bluej # for uni, rm when we're done w/ that
     blackbox-terminal
     gnome.gnome-chess
     ciano # converter
     contrast
-    collision # hash checker
+    collision # hash checker # build failure, new version hasn't been merged
     gnome.dconf-editor
     ddrescue
     discord
@@ -30,7 +29,7 @@
     figma-agent
     filezilla
     fortune # fortune cookie message cli
-    # lorem # to be merged https://github.com/NixOS/nixpkgs/issues/195280
+    unstable-pkgs.lorem
     geogebra6
     gimp
     gnumake
@@ -54,7 +53,7 @@
     minder
     gnome.gnome-nettool
     # nordvpn # todo: replace with nordvpn as soon as merged
-    notion-app-enhanced
+    # notion-app-enhanced # broken
     gnome-obfuscate # blur data in images, pdfs etc
     pdfslicer
     peek # gif recorder
@@ -68,7 +67,9 @@
     spotify
     gnome.gnome-sudoku
     gnome.sushi # nautilus file preview
+    texlive.combined.scheme-full
     tldr
+    typst
     ungoogled-chromium
     ventoy
     vlc
@@ -141,9 +142,4 @@
     package = pkgs.firefox-wayland;
   };
   home.sessionVariables.MOZ_ENABLE_WAYLAND = 1;
-
-  programs.texlive = {
-    enable = true;
-    extraPackages = texlive: {inherit (texlive) scheme-medium scheme-context;};
-  };
 }

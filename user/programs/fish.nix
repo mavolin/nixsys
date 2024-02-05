@@ -46,7 +46,6 @@
         reos
         popd
       '';
-      nixcmd = "nix shell nixpkgs#$argv[1] -c $argv";
       nixsh = "nix shell nixpkgs#$argv[1]";
 
       goget = "go get (echo $argv[1] | sed 's|https://||g')";
