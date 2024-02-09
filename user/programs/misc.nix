@@ -13,12 +13,11 @@
     gnome.aisleriot
     any-nix-shell
     apostrophe
-    bluej # for uni, rm when we're done w/ that
     blackbox-terminal
     gnome.gnome-chess
     ciano # converter
     contrast
-    collision # hash checker # build failure, new version hasn't been merged
+    collision # hash checker
     gnome.dconf-editor
     ddrescue
     discord
@@ -124,7 +123,7 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.vivaldi;
+    package = unstable-pkgs.vivaldi; # stable has broken hardware acceleration
     dictionaries = with pkgs.hunspellDictsChromium; [en_GB de_DE en_US];
     extensions = [
       {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # dark reader
