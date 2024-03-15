@@ -8,6 +8,8 @@
         User borg
         IdentityFile ${base.backup.identityFile}
         IdentityAgent /
+        ServerAliveInterval 60
+        ServerAliveCountMax 240
 
       Host *
        IdentityAgent ~/.1password/agent.sock

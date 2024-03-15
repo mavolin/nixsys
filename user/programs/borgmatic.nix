@@ -24,6 +24,8 @@
               "home/${base.username}/.cache"
               "home/${base.username}/.compose-cache"
               "home/${base.username}/.java"
+              "home/${base.username}/.local/share/Steam/steamapps"
+              "home/${base.username}/.local/share/Steam/ubuntu*"
               "home/${base.username}/.m2"
               "home/${base.username}/.mozilla"
               "home/${base.username}/.npm"

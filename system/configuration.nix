@@ -13,6 +13,7 @@
     ./i18n.nix
     ./programs.nix
     ./services
+    ./steam.nix
     ./users.nix
     ./xkb.nix
   ];

@@ -14,6 +14,7 @@
     any-nix-shell
     apostrophe
     blackbox-terminal
+    bottles
     gnome.gnome-chess
     ciano # converter
     contrast
@@ -59,7 +60,7 @@
     pick-colour-picker
     powertop
     gnome.quadrapassel
-    rustdesk # for work
+    unstable-pkgs.rustdesk-flutter # for work, only in unstable for now
     samba
     scc
     signal-desktop
@@ -75,7 +76,6 @@
     video-trimmer
     wineWowPackages.stable
     winetricks
-    playonlinux
     wl-clipboard # for emote
     xdotool
     zoom-us
