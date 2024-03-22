@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     gnome.aisleriot
+    angryipscanner
     any-nix-shell
     apostrophe
     blackbox-terminal
