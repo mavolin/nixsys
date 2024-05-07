@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs.gnomeExtensions; [
     backslide
+    blur-my-shell
     caffeine
     force-quit
     gnome-40-ui-improvements
@@ -17,6 +18,7 @@
 
       enabled-extensions = [
         "backslide@codeisland.org"
+        "blur-my-shell@aunetx"
         "caffeine@patapon.info"
         "fq@megh"
         "gnome-ui-tune@itstime.tech"
@@ -25,6 +27,21 @@
         "lockkeys@vaina.lt"
         "pano@elhan.io"
         "tiling-assistant@leleat-on-github"
+      ];
+    };
+
+  "org/gnome/shell/extensions/blur-my-shell" = {
+      hacks-level = 3;
+      sigma = 30;
+      brightness = 0.50;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      blur = true;
+      sigma = 48;
+      opacity = 220;
+      enable-all = true;
+      blacklist = [
+        "Plank" "jetbrains-idea" "jetbrains-goland" "jetbrains-webstorm" "jetbrains-clion" "jetbrains-pycharm"
       ];
     };
 
