@@ -61,6 +61,9 @@ in {
 
       [commit]
       gpgsign = true
+
+      [pull]
+      ff = only
     '';
   in
     (builtins.listToAttrs (map (server: {
