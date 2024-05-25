@@ -1,4 +1,4 @@
-{ base, ... }: {
+{base, ...}: {
   networking = {
     hostName = base.hostname;
     extraHosts = ''

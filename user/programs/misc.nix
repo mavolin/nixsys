@@ -1,6 +1,7 @@
 {
   base,
-  pkgs, unstable-pkgs,
+  pkgs,
+  unstable-pkgs,
   config,
   lib,
   ...

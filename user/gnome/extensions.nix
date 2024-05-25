@@ -30,7 +30,7 @@
       ];
     };
 
-  "org/gnome/shell/extensions/blur-my-shell" = {
+    "org/gnome/shell/extensions/blur-my-shell" = {
       hacks-level = 3;
       sigma = 30;
       brightness = 0.50;
@@ -41,7 +41,12 @@
       opacity = 220;
       enable-all = true;
       blacklist = [
-        "Plank" "jetbrains-idea" "jetbrains-goland" "jetbrains-webstorm" "jetbrains-clion" "jetbrains-pycharm"
+        "Plank"
+        "jetbrains-idea"
+        "jetbrains-goland"
+        "jetbrains-webstorm"
+        "jetbrains-clion"
+        "jetbrains-pycharm"
       ];
     };
 
