@@ -34,10 +34,10 @@
           };
         };
         retention = {
-          keepHourly = 18;
-          keepDaily = 7;
-          keepWeekly = 4;
-          keepMonthly = 3;
+          keepHourly = 24;
+          keepDaily = 28;
+          keepWeekly = 8;
+          keepMonthly = 6;
         };
 
         # there's no global extraConfig, but this is just as good
