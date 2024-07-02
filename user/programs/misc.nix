@@ -87,6 +87,10 @@
 
   #### PROGRAM OPTIONS ####
 
+  # 1password
+  # installed at system level, but the file is in user home
+  home.sessionVariables.SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
+
   # backslide
   dconf.settings."org/gnome/shell/extensions/backslide" = {
     delay = 15;
