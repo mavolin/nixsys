@@ -64,6 +64,7 @@ in {
 
       [pull]
       ff = only
+      autoSetupRemote = true
     '';
   in
     (builtins.listToAttrs (map (server: {
