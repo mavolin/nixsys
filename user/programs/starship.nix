@@ -24,16 +24,16 @@
         style = "bold yellow";
       };
       git_status = {
-        conflicted = "⚔️ ";
-        ahead = "\${count}×a🙍 ";
-        behind = "\${count}×🐝hind ";
-        diverged = "🔱 \${ahead_count}×a🙍/\${behind_count}×🐝hind ";
-        untracked = "\${count}×un🛤️ed ";
+        conflicted = "confl ";
+        ahead = "\${count}×ahd ";
+        behind = "\${count}×bhnd ";
+        diverged = "div \${ahead_count}×ahd/\${behind_count}×bhnd ";
+        untracked = "\${count}×untrckd ";
         stashed = "stashed ";
         modified = "\${count}×mod ";
         staged = "\${count}×stgd ";
         renamed = "\${count}×mv ";
-        deleted = "\${count}×🚮 ";
+        deleted = "\${count}×del ";
         style = "bright-white";
         format = "$all_status$ahead_behind";
       };
