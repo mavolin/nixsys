@@ -7,30 +7,30 @@
     enable = true;
     excludePackages = with pkgs; [xterm];
 
-    libinput = {
-      enable = true;
-      mouse = {
-        accelProfile = "flat";
-        naturalScrolling = true;
-      };
-    };
-
     displayManager = {
       gdm = {
         enable = true;
-        # keyd doesn't work under wayland and spotify has some weird bugs as well
+        # spotify has some weird bugs
         wayland = false;
-      };
-      autoLogin = {
-        enable = base.autoLogin;
-        user = base.username;
       };
     };
     desktopManager.gnome = {
       enable = true;
     };
   };
+  services.displayManager.autoLogin = {
+    enable = base.autoLogin;
+    user = base.username;
+  };
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      naturalScrolling = true;
+    };
+  };
 
   # workaround for autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
