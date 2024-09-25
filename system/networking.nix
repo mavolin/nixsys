@@ -16,12 +16,22 @@
           from = 1714;
           to = 1764;
         }
+        {
+          # AusweisApp
+          from = 24727;
+          to = 24727;
+        }
       ];
       allowedUDPPortRanges = [
         {
           # GSConnect
           from = 1714;
           to = 1764;
+        }
+        {
+          # AusweisApp
+          from = 24727;
+          to = 24727;
         }
       ];
 
