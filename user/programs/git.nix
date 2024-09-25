@@ -39,6 +39,14 @@ in {
         else []
       );
     ignores = [".direnv/" "testlocal/" ".idea/" "todo" ".gitconfig"];
+    extraConfig = {
+      pull = {
+        ff = "only";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
+    };
   };
 
   home.file = let
@@ -61,10 +69,6 @@ in {
 
       [commit]
       gpgsign = true
-
-      [pull]
-      ff = only
-      autoSetupRemote = true
     '';
   in
     (builtins.listToAttrs (map (server: {
