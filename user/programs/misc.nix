@@ -54,6 +54,7 @@
     gnome.gnome-mahjongg
     meld
     minder
+    gnome.networkmanager-openconnect
     gnome.gnome-nettool
     # nordvpn # todo: replace with nordvpn as soon as merged
     # notion-app-enhanced # broken
