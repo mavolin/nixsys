@@ -15,6 +15,7 @@
     angryipscanner
     any-nix-shell
     apostrophe
+    ausweisapp
     blackbox-terminal
     bottles
     gnome.gnome-chess
