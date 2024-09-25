@@ -8,10 +8,12 @@
     aspellDicts.de
     aspellDicts.en
     aspellDicts.en-computers
+    aspellDicts.es
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_GB-large
     hunspellDicts.en_US
+    hunspellDicts.es_ES
 
     samba
   ];
