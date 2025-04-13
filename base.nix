@@ -3,8 +3,6 @@ rec {
   hostname = "mavolin-laptop";
   username = "mavolin";
   autoLogin = true;
-  # whether to delete the contents of the Downloads folder every reboot
-  emptyDownloadsOnReboot = true;
 
   timeZone = "Europe/Berlin";
   locale = {
@@ -16,28 +14,19 @@ rec {
   };
 
   backup = {
-    # In order for backups to work, a borg backup server must be running
+    # In order for backups to work, a restic rest server must be running
     # on the host specified below.
-    # Additionally, you must generate a ssh key pair, e.g. with ssh-keygen,
-    # and add the public key to the authorized_keys file of the server.
+    # Additionally, you need to place a restic_passwd with the encryption
+    # password and a restic_rest_passwd with the rest server password in
+    # secrets.
     enabled = true;
-    host = "backup.mavolin.co";
-    port = 2222;
-    # If the backups are to be encrypted, a passphrase must be provided
-    # in 'user/programs/borgmatic_enc_passphrase'.
-    # To disable encryption, set this to false.
-    encrypt = true;
-    # Name of the repository on the backup server.
-    repository = "home";
-    # This is the file that contains the private key used to authenticate
-    # with the borg backup server.
-    identityFile = "/home/${username}/.ssh/id_borg";
+    server = "rocketman.backup.mavolin.co";
+    user = hostname;
     ntfy = {
-      # If set to null, no ntfy notifications will be sent.
-      # Password will be read from 'user/programs/borgmatic_ntfy_passwd'.
-      user = "${hostname}-borgmatic";
-      server = "https://ntfy.mavolin.co";
-      topic = "${hostname}-backup";
+      # needs a secrets/restic_ntfy_token
+      enabled = true;
+      url = "https://ntfy.mavolin.co";
+      topic = "backup";
     };
   };
 
