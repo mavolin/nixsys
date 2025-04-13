@@ -1,5 +1,5 @@
 {
-  hardware.tuxedo-keyboard = {
+  hardware.tuxedo-drivers = {
     enable = true;
   };
   boot.kernelParams = [
@@ -23,6 +23,7 @@
         device_name = "platform:tuxedo_keyboard";
         function = "kbd_backlight";
         profile = "none";
+        mode = "rgb";
       }
     ];
     performance_profile = "entertainment";

@@ -11,28 +11,28 @@
   ##################
 
   home.packages = with pkgs; [
-    gnome.aisleriot
+    aisleriot
     angryipscanner
     any-nix-shell
     apostrophe
     ausweisapp
     blackbox-terminal
     bottles
-    gnome.gnome-chess
+    gnome-chess
     ciano # converter
     contrast
     collision # hash checker
-    gnome.dconf-editor
+    dconf-editor
     ddrescue
     discord
     drawing
     drawio
     emote
-    figma-linux
-    figma-agent
+    # figma-linux
+    # figma-agent
     filezilla
     fortune # fortune cookie message cli
-    unstable-pkgs.lorem
+    lorem
     geogebra6
     gimp
     gnumake
@@ -51,25 +51,25 @@
     libsForQt5.kdenlive
     less
     libreoffice-fresh
-    gnome.gnome-mahjongg
+    gnome-mahjongg
     meld
     minder
-    gnome.networkmanager-openconnect
-    gnome.gnome-nettool
+    networkmanager-openconnect
+    gnome-nettool
     # nordvpn # todo: replace with nordvpn as soon as merged
     gnome-obfuscate # blur data in images, pdfs etc
     pdfslicer
     peek # gif recorder
     pick-colour-picker
     powertop
-    gnome.quadrapassel
-    unstable-pkgs.rustdesk-flutter # for work, only in unstable for now
+    quadrapassel
+    rustdesk-flutter
     samba
     scc
     signal-desktop
     spotify
-    gnome.gnome-sudoku
-    gnome.sushi # nautilus file preview
+    gnome-sudoku
+    sushi # nautilus file preview
     texlive.combined.scheme-full
     tldr
     typst
@@ -130,7 +130,7 @@
 
   programs.chromium = {
     enable = true;
-    package = unstable-pkgs.vivaldi; # stable has broken hardware acceleration
+    package = pkgs.vivaldi; # stable has broken hardware acceleration
     dictionaries = let
       mkDictFromChromium = {
         shortName,

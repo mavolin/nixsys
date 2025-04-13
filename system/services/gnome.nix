@@ -22,7 +22,7 @@
     enable = base.autoLogin;
     user = base.username;
   };
-  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+  services.udev.packages = with pkgs; [gnome-settings-daemon];
 
   services.libinput = {
     enable = true;
@@ -37,10 +37,10 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    pkgs.gnome-tour
-    pkgs.gnome-console
-    pkgs.gnome-photos
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-console
+    gnome-photos
     gnome-contacts
     gnome-disk-utility
     epiphany

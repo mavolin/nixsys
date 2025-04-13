@@ -6,7 +6,7 @@
     extensions = with unstable-pkgs.vscode-extensions;
       [
         github.copilot
-        nvarner.typst-lsp
+        myriad-dreamin.tinymist
       ]
       ++ unstable-pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
