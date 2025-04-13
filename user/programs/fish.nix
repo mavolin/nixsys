@@ -25,17 +25,14 @@
 
         # so nix let's us use the git-settings.nix file
         mv user/programs/.gitignore user/programs/.gitignore.old
-        git add user/programs/borgmatic_enc_passphrase
-        git add user/programs/borgmatic_ntfy_passwd
         git add user/programs/git-settings.nix
-
+        git add secrets/
 
         sudo nixos-rebuild switch --flake .
 
         mv user/programs/.gitignore.old user/programs/.gitignore
-        git reset user/programs/borgmatic_enc_passphrase --quiet
-        git reset user/programs/borgmatic_ntfy_passwd --quiet
         git reset user/programs/git-settings.nix --quiet
+        git reset secrets/ --quiet
 
         popd
       '';
@@ -105,6 +102,22 @@
 
         git tag -a $new_tag -m "Version $new_tag"; or return $status
         echo $new_tag
+      '';
+
+      bak = ''
+        set service_name restic-backups-${base.backup.server}.service
+
+        sudo systemctl start $service_name
+        sudo journalctl -f -u $service_name &
+        set journalctl_pid $last_pid
+
+        while systemctl is-active --quiet $service_name
+          sleep 1
+        end
+        # wait an additional second to ensure the journalctl output is flushed
+        sleep 1
+
+        kill $journalctl_pid
       '';
     };
   };

@@ -2,7 +2,6 @@
   imports = [
     ./misc.nix
 
-    ./borgmatic.nix
     ./fish.nix
     ./git.nix
     ./jetbrains.nix
