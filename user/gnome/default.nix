@@ -88,7 +88,7 @@
           then [("/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom" + (toString start) + "/")] ++ (mkPath (start + 1) end)
           else [];
       in
-        mkPath 0 2;
+        mkPath 0 3;
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>t";
@@ -104,6 +104,11 @@
       binding = "<Ctrl><Shift>space";
       command = "1password --quick-access";
       name = "1Password Quick Access";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = "<Super>e";
+      command = "geary";
+      name = "Geary";
     };
   };
 
