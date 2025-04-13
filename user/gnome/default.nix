@@ -152,21 +152,11 @@
   dconf.settings = {
     "org/gnome/desktop/session" = {
       # time after which the screen turns blank
-      idle-delay = lib.hm.gvariant.mkUint32 (
-        15 * 60
-        /*
-        sec
-        */
-      );
+      idle-delay = lib.hm.gvariant.mkUint32 (15 * 60); # sec
     };
     "org/gnome/desktop/screensaver" = {
       # time after which after the screen turned blank, the session locks
-      lock-delay =
-        15
-        /*
-        sec
-        */
-        ;
+      lock-delay = 15; # sec
       lock-enabled = true;
     };
   };
@@ -180,12 +170,7 @@
     "org/gnome/desktop/peripherals/touchpad" = {tap-to-click = true;};
     "org/gnome/desktop/privacy" = {
       # how long to keep trash and temp files
-      old-files-age =
-        15
-        /*
-        days
-        */
-        ;
+      old-files-age = 15; # days
       remove-old-temp-files = true;
       remove-old-trash-files = true;
     };
