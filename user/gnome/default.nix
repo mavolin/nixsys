@@ -17,10 +17,6 @@
       package = pkgs.adw-gtk3;
       name = "adw-gtk3-dark";
     };
-    iconTheme = {
-      package = pkgs.colloid-icon-theme;
-      name = "Colloid-dark";
-    };
   };
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
