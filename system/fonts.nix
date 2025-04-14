@@ -18,7 +18,6 @@
       liberation_ttf
       corefonts
       noto-fonts
-      gyre-fonts
       ubuntu_font_family
       cascadia-code
       fira
@@ -38,6 +37,6 @@
       (nerdfonts.override {
         fonts = ["FiraCode" "JetBrainsMono"];
       })
-    ];
+    ] ++ (lib.attrValues tex-gyre) ++ (lib.attrValues tex-gyre-math);
   };
 }
