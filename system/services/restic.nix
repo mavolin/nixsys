@@ -1,4 +1,4 @@
-{base, ...}: let
+{base, pkgs, ...}: let
   restPasswd = builtins.readFile ../../secrets/restic_rest_passwd;
 in
   {
@@ -35,20 +35,23 @@ in
   }
   // (
     if base.backup.ntfy.enabled
-    then {
-      systemd.services."restic-backups-${base.backup.server}" = {
-        unitConfig.OnFailure = ["ntfy-failure@restic-backups-${base.backup.server}"];
+    then let
+      backup-unit = "restic-backups-${base.backup.server}";
+      backup-service = "${backup-unit}.service";
+    in {
+      systemd.services.${backup-unit} = {
+        unitConfig.OnFailure = ["ntfy-failure@${backup-service}"];
       };
-      systemd.services."ntfy-failure@restic-backups-${base.backup.server}" = {
+      systemd.services."ntfy-failure@${backup-unit}" = {
         enable = true;
         description = "Failure notification for %i";
         script = ''
-          ntfy publish \
+          ${pkgs.ntfy-sh}/bin/ntfy publish \
             --title "Backup failed" \
             --tags warning \
             --priority high \
             --token ${builtins.readFile ../../secrets/restic_ntfy_token} \
-            ${base.backup.ntfy.url}/${base.backup.ntfy.topic} "$(journalctl -u "$unit" -o cat -n 15)"
+            ${base.backup.ntfy.url}/${base.backup.ntfy.topic} "$(journalctl -u ${backup-service} -o cat -I)"
         '';
       };
     }

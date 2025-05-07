@@ -13,9 +13,10 @@
     ./hardware-acceleration.nix
     ./i18n.nix
     ./networking.nix
+    ./power_management.nix
     ./programs.nix
     ./services
-    ./steam.nix
+    ./systemd.nix
     ./users.nix
     ./xkb.nix
   ];
@@ -35,14 +36,6 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
-
-  powerManagement = {
-    enable = true;
-    cpufreq.max = 3200000;
-  };
-  services.power-profiles-daemon.enable = false;
-  services.tlp.enable = true;
-  services.thermald.enable = true;
 
   system.stateVersion = base.stateVersion;
 }
