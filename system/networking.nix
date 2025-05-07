@@ -2,9 +2,9 @@
   networking = {
     hostName = base.hostname;
     extraHosts = ''
-      127.0.0.1 a.loc
-      127.0.0.1 b.loc
-      127.0.0.1 c.loc
+      127.0.0.1 a.local
+      127.0.0.1 b.local
+      127.0.0.1 c.local
     '';
     networkmanager.enable = true;
 

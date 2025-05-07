@@ -31,4 +31,6 @@
   };
 
   services.dbus.enable = true;
+
+  programs.steam.enable = true;
 }

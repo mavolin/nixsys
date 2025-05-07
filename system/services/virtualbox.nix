@@ -1,6 +1,6 @@
 {base, ...}: {
   virtualisation.virtualbox.host = {
-    #     enable = true;
+    enable = true;
   };
   users.extraGroups.vboxusers.members = [base.username];
 }

@@ -10,13 +10,9 @@
     displayManager = {
       gdm = {
         enable = true;
-        # spotify has some weird bugs
-        wayland = false;
       };
     };
-    desktopManager.gnome = {
-      enable = true;
-    };
+    desktopManager.gnome.enable = true;
   };
   services.displayManager.autoLogin = {
     enable = base.autoLogin;
@@ -47,5 +43,5 @@
     totem
     gnome-weather
   ];
-  #environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
 }
