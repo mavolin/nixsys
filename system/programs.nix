@@ -2,7 +2,8 @@
   base,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     aspell
     aspellDicts.de
@@ -15,6 +16,8 @@
     hunspellDicts.en_US
     hunspellDicts.es_ES
 
+    nixd
+    nixfmt-rfc-style
     samba
   ];
 
@@ -23,7 +26,7 @@
     enable = true;
     # Certain features, including CLI integration and system authentication support,
     # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-    polkitPolicyOwners = [base.username];
+    polkitPolicyOwners = [ base.username ];
   };
   environment.etc."1password/custom_allowed_browsers" = {
     text = "vivaldi-bin";
