@@ -1,4 +1,5 @@
-{base, ...}: {
+{ base, ... }:
+{
   programs.ssh = {
     enable = true;
     extraConfig = ''

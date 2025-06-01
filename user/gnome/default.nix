@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./extensions.nix
   ];
@@ -44,46 +45,64 @@
 
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = [(lib.hm.gvariant.mkTuple ["xkb" "us-german"])];
+      sources = [
+        (lib.hm.gvariant.mkTuple [
+          "xkb"
+          "us-german"
+        ])
+      ];
     };
 
-    "org/gnome/desktop/wm/keybindings" = let
-      mkWorkspaceKeybindings = start: end:
-        if start <= end
-        then
-          {
-            "switch-to-application-${toString start}" = [];
-            "switch-to-workspace-${toString start}" = ["<Super>${toString start}"];
-            "move-to-workspace-${toString start}" = ["<Super><Shift>${toString start}"];
-          }
-          // mkWorkspaceKeybindings (start + 1) end
-        else {};
-    in
-      mkWorkspaceKeybindings 1 5
+    "org/gnome/mutter".experimental-features = [ "scale-monitor-framebuffer" ];
+
+    "org/gnome/desktop/wm/keybindings" =
+      let
+        mkWorkspaceKeybindings =
+          i:
+          if i >= 1 then
+            {
+              "switch-to-application-${toString i}" = [ ];
+              "switch-to-workspace-${toString i}" = [ "<Super>${toString i}" ];
+              "move-to-workspace-${toString i}" = [ "<Super><Shift>${toString i}" ];
+            }
+            // mkWorkspaceKeybindings (i - 1)
+          else
+            { };
+      in
+      mkWorkspaceKeybindings 5
       // {
-        close = ["<Super>q"];
+        close = [ "<Super>q" ];
       };
-    "org/gnome/shell/keybindings" = let
-      # delete switch-to-applications keybindings conflicting w/
-      # these
-      mkWorkspaceKeybindings = start: end:
-        if start <= end
-        then {"switch-to-application-${toString start}" = [];} // mkWorkspaceKeybindings (start + 1) end
-        else {};
-    in
-      mkWorkspaceKeybindings 1 5;
+    "org/gnome/shell/keybindings" =
+      let
+        # delete switch-to-applications keybindings conflicting w/
+        # these
+        mkWorkspaceKeybindings =
+          i:
+          if i >= 1 then
+            { "switch-to-application-${toString i}" = [ ]; } // mkWorkspaceKeybindings (i - 1)
+          else
+            { };
+      in
+      mkWorkspaceKeybindings 5;
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      calculator = ["<Super>c"];
-      home = ["<Super>f"];
-      www = ["<Super>b"];
+      calculator = [ "<Super>c" ];
+      home = [ "<Super>f" ];
+      www = [ "<Super>b" ];
 
-      custom-keybindings = let
-        mkPath = start: end:
-          if start <= end
-          then [("/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom" + (toString start) + "/")] ++ (mkPath (start + 1) end)
-          else [];
-      in
+      custom-keybindings =
+        let
+          mkPath =
+            start: end:
+            if start <= end then
+              [
+                ("/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom" + (toString start) + "/")
+              ]
+              ++ (mkPath (start + 1) end)
+            else
+              [ ];
+        in
         mkPath 0 3;
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -98,7 +117,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Ctrl><Shift>space";
-      command = "1password --quick-access";
+      command = "1password --quick-access --ozone-platform=wayland";
       name = "1Password Quick Access";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
@@ -113,32 +132,35 @@
   ##############################
 
   # https://github.com/nix-community/home-manager/issues/3447#issuecomment-1328294558
-  xdg.configFile = let
-    autostartApps = [
-      {
-        pkg = pkgs._1password-gui;
-        args = "--silent";
-      }
-      {pkg = pkgs.emote;}
-      {pkg = pkgs.whatsapp-for-linux;}
-    ];
-
-    mkAutostartEntries = i:
-      if i < (builtins.length autostartApps)
-      then let
-        autostart = builtins.elemAt autostartApps i;
-      in
+  xdg.configFile =
+    let
+      autostartApps = [
         {
-          "autostart/${autostart.cmd or autostart.pkg.pname}.desktop".text = ''
-            [Desktop Entry]
-            Type=Application
-            Name=${autostart.cmd or autostart.pkg.pname}
-            Exec=${autostart.cmd or autostart.pkg.pname} ${autostart.args or ""}
-          '';
+          pkg = pkgs._1password-gui;
+          args = "--silent --ozone-platform=wayland";
         }
-        // mkAutostartEntries (i + 1)
-      else {};
-  in
+        { pkg = pkgs.emote; }
+        { pkg = pkgs.whatsapp-for-linux; }
+      ];
+
+      mkAutostartEntries =
+        i:
+        if i < (builtins.length autostartApps) then
+          let
+            autostart = builtins.elemAt autostartApps i;
+          in
+          {
+            "autostart/${autostart.cmd or autostart.pkg.pname}.desktop".text = ''
+              [Desktop Entry]
+              Type=Application
+              Name=${autostart.cmd or autostart.pkg.pname}
+              Exec=${autostart.cmd or autostart.pkg.pname} ${autostart.args or ""}
+            '';
+          }
+          // mkAutostartEntries (i + 1)
+        else
+          { };
+    in
     mkAutostartEntries 0;
 
   ########################
@@ -162,8 +184,12 @@
   ##############
 
   dconf.settings = {
-    "org/gnome/desktop/peripherals/mouse" = {natural-scroll = true;};
-    "org/gnome/desktop/peripherals/touchpad" = {tap-to-click = true;};
+    "org/gnome/desktop/peripherals/mouse" = {
+      natural-scroll = true;
+    };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+    };
     "org/gnome/desktop/privacy" = {
       # how long to keep trash and temp files
       old-files-age = 15; # days
@@ -176,7 +202,7 @@
 
     "org/gnome/shell" = {
       # pinned apps in the dock
-      favorite-apps = [];
+      favorite-apps = [ ];
     };
   };
 }

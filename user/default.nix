@@ -2,7 +2,8 @@
   base,
   pkgs,
   ...
-} @ inputs: {
+}@inputs:
+{
   imports = [
     ./gnome
     ./programs

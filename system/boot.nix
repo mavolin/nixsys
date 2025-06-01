@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   boot = {
     loader.systemd-boot = {
       enable = true;
@@ -9,9 +10,5 @@
     loader.efi.canTouchEfiVariables = true;
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "mem_sleep_default=deep"
-      "i915.enable_psr=1"
-    ];
   };
 }

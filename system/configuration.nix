@@ -3,17 +3,18 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
     ./boot.nix
     ./fonts.nix
-    ./hardware-acceleration.nix
+    ./hardware.nix
     ./i18n.nix
     ./networking.nix
-    ./power_management.nix
+    ./power-management.nix
     ./programs.nix
     ./services
     ./systemd.nix
@@ -23,13 +24,20 @@
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "daily"];
     };
   };
 

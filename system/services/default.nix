@@ -5,7 +5,6 @@
     ./pipewire.nix
     ./printing.nix
     ./restic.nix
-    ./tuxedo.nix
     ./virtualbox.nix
   ];
 }

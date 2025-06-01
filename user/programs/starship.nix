@@ -4,12 +4,14 @@
     enableFishIntegration = true;
     settings = {
       battery.disabled = true;
-      character = let
-        c = "€";
-      in {
-        success_symbol = "[${c}](bold green)";
-        error_symbol = "[${c}](bold red)";
-      };
+      character =
+        let
+          c = "€";
+        in
+        {
+          success_symbol = "[${c}](bold green)";
+          error_symbol = "[${c}](bold red)";
+        };
       cmd_duration = {
         min_time = 3000;
         format = "took [$duration]($style) ";

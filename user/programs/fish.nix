@@ -1,4 +1,5 @@
-{base, ...}: {
+{ base, ... }:
+{
   programs.fish = {
     enable = true;
 

@@ -1,11 +1,9 @@
 {
-  base,
   pkgs,
-  unstable-pkgs,
-  config,
   lib,
   ...
-}: {
+}:
+{
   ##################
   #### PROGRAMS ####
   ##################
@@ -73,8 +71,7 @@
     texlive.combined.scheme-full
     tldr
     typst
-    ungoogled-chromium
-    ventoy
+    # ventoy
     vlc
     video-trimmer
     wineWowPackages.stable
@@ -131,13 +128,15 @@
   programs.chromium = {
     enable = true;
     package = pkgs.vivaldi; # stable has broken hardware acceleration
-    dictionaries = let
-      mkDictFromChromium = {
-        shortName,
-        dictFileName,
-        shortDescription,
-      }:
-        with pkgs;
+    dictionaries =
+      let
+        mkDictFromChromium =
+          {
+            shortName,
+            dictFileName,
+            shortDescription,
+          }:
+          with pkgs;
           stdenv.mkDerivation {
             pname = "hunspell-dict-${shortName}-chromium";
             version = "115.0.5790.170";
@@ -171,22 +170,33 @@
 
                 See https://www.chromium.org/developers/how-tos/editing-the-spell-checking-dictionaries/
               '';
-              license = with lib.licenses; [gpl2 lgpl21 mpl11 lgpl3];
-              maintainers = with lib.maintainers; [networkexception];
+              license = with lib.licenses; [
+                gpl2
+                lgpl21
+                mpl11
+                lgpl3
+              ];
+              maintainers = with lib.maintainers; [ networkexception ];
               platforms = lib.platforms.all;
             };
           };
-      es_ES = mkDictFromChromium {
-        shortName = "es-ES";
-        dictFileName = "es-ES-3-0.bdic";
-        shortDescription = "Spanish (Spain)";
-      };
-    in
-      with pkgs.hunspellDictsChromium; [en_GB de_DE en_US es_ES];
+        es_ES = mkDictFromChromium {
+          shortName = "es-ES";
+          dictFileName = "es-ES-3-0.bdic";
+          shortDescription = "Spanish (Spain)";
+        };
+      in
+      with pkgs.hunspellDictsChromium;
+      [
+        en_GB
+        de_DE
+        en_US
+        es_ES
+      ];
     extensions = [
-      {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # dark reader
-      {id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa";} # 1password
-      {id = "nffaoalbilbmmfgbnbgppjihopabppdk";} # video speed controller
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
+      { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1password
+      { id = "nffaoalbilbmmfgbnbgppjihopabppdk"; } # video speed controller
     ];
   };
 

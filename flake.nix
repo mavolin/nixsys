@@ -10,46 +10,49 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-  } @ inputs: let
-    # Change base.nix to edit the most common settings.
-    base = import ./base.nix;
-    unstable-pkgs = import nixpkgs-unstable {
-      inherit (base) system;
-      config = {
-        allowUnfree = true;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+    }@inputs:
+    let
+      # Change base.nix to edit the most common settings.
+      base = import ./base.nix;
+      unstable-pkgs = import nixpkgs-unstable {
+        inherit (base) system;
+        config = {
+          allowUnfree = true;
+        };
       };
-    };
-    specialArgs =
-      inputs
-      // {
+      specialArgs = inputs // {
         inherit base;
         inherit unstable-pkgs;
       };
-  in {
-    formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.alejandra;
+    in
+    {
+      formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.alejandra;
 
-    nixosConfigurations = {
-      ${base.hostname} = nixpkgs.lib.nixosSystem {
-        inherit (base) system;
-        inherit specialArgs;
-        modules = [
-          ./system/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${base.username} = import ./user;
-              extraSpecialArgs = specialArgs;
-            };
-          }
-        ];
+      nixpkgs.overlays = [ (import ./overlays/1password.nix) ];
+
+      nixosConfigurations = {
+        ${base.hostname} = nixpkgs.lib.nixosSystem {
+          inherit (base) system;
+          inherit specialArgs;
+          modules = [
+            ./system/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${base.username} = import ./user;
+                extraSpecialArgs = specialArgs;
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
