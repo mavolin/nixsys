@@ -1,4 +1,4 @@
-{ base, ... }:
+{ ... }:
 {
   programs.ssh = {
     enable = true;

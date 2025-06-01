@@ -1,9 +1,4 @@
-{
-  base,
-  pkgs,
-  lib,
-  ...
-}:
+{ base, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -37,7 +32,7 @@
     };
     optimise = {
       automatic = true;
-      dates = [ "daily"];
+      dates = [ "daily" ];
     };
   };
 
