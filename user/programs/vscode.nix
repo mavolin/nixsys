@@ -1,9 +1,11 @@
-{unstable-pkgs, ...}: {
+{ unstable-pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
     package = unstable-pkgs.vscodium;
 
-    extensions = with unstable-pkgs.vscode-extensions;
+    extensions =
+      with unstable-pkgs.vscode-extensions;
       [
         github.copilot
         myriad-dreamin.tinymist

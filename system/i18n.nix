@@ -2,7 +2,8 @@
   base,
   lib,
   ...
-}: {
+}:
+{
   time.timeZone = base.timeZone;
 
   # i'd rather set the locale stuff per user and just have global
@@ -10,12 +11,12 @@
   # possible
   i18n = {
     defaultLocale = base.locale.default;
-    extraLocaleSettings = let
-      optSet = name:
-        if base.locale ? name
-        then {${"LC_" + lib.strings.toUpper name} = base.locale.${name};}
-        else {};
-    in
+    extraLocaleSettings =
+      let
+        optSet =
+          name:
+          if base.locale ? name then { ${"LC_" + lib.strings.toUpper name} = base.locale.${name}; } else { };
+      in
       optSet "address"
       // optSet "collate"
       // optSet "ctype"

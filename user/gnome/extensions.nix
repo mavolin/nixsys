@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs.gnomeExtensions; [
     backslide
     blur-my-shell
@@ -51,7 +52,7 @@
     };
 
     "org/gnome/shell/extensions/pano" = {
-      global-shortcut = ["<Super>v"];
+      global-shortcut = [ "<Super>v" ];
       history-length = 10;
       keep-search-entry = false;
       link-previews = true;
@@ -61,7 +62,7 @@
       send-notification-on-copy = false;
       show-indicator = false;
       watch-exclusion-list = true;
-      exclusion-list = ["1Password"];
+      exclusion-list = [ "1Password" ];
 
       window-height = 280;
     };

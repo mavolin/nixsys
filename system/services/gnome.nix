@@ -1,11 +1,8 @@
+{ base, pkgs, ... }:
 {
-  base,
-  pkgs,
-  ...
-}: {
   services.xserver = {
     enable = true;
-    excludePackages = with pkgs; [xterm];
+    excludePackages = with pkgs; [ xterm ];
 
     displayManager = {
       gdm = {
@@ -18,7 +15,7 @@
     enable = base.autoLogin;
     user = base.username;
   };
-  services.udev.packages = with pkgs; [gnome-settings-daemon];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   services.libinput = {
     enable = true;
