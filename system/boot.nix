@@ -10,5 +10,6 @@
     loader.efi.canTouchEfiVariables = true;
 
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "acpi.ec_no_wakeup=1" ];
   };
 }
