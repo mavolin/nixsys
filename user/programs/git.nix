@@ -50,6 +50,9 @@ in
       ".gitconfig"
     ];
     extraConfig = {
+      init = {
+        defaultBranch = "v0";
+      };
       pull = {
         ff = "only";
       };
