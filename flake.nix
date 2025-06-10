@@ -32,7 +32,7 @@
       };
     in
     {
-      formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.alejandra;
+      formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.nixfmt-rfc-style;
 
       nixpkgs.overlays = [ (import ./overlays/1password.nix) ];
 
