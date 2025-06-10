@@ -16,6 +16,7 @@
     ausweisapp
     blackbox-terminal
     bottles
+    gnome-boxes
     gnome-chess
     ciano # converter
     contrast
