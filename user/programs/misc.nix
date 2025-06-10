@@ -73,6 +73,7 @@
     tldr
     typst
     # ventoy
+    virt-manager
     vlc
     video-trimmer
     wineWowPackages.stable
