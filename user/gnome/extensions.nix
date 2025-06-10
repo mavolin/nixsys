@@ -37,23 +37,12 @@
       brightness = 0.50;
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      blur = true;
-      sigma = 48;
-      opacity = 220;
-      enable-all = true;
-      blacklist = [
-        "Plank"
-        "jetbrains-idea"
-        "jetbrains-goland"
-        "jetbrains-webstorm"
-        "jetbrains-clion"
-        "jetbrains-pycharm"
-      ];
+      blur = false;
     };
 
     "org/gnome/shell/extensions/pano" = {
       global-shortcut = [ "<Super>v" ];
-      history-length = 10;
+      history-length = 25;
       keep-search-entry = false;
       link-previews = true;
       open-links-in-browser = true;
