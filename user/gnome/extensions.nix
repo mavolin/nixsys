@@ -2,13 +2,13 @@
 {
   home.packages = with pkgs.gnomeExtensions; [
     backslide
+    battery-health-charging
     blur-my-shell
     caffeine
     force-quit
     gnome-40-ui-improvements
     # gnordvpn-local
     gsconnect
-    lock-keys
     pano
     tiling-assistant
   ];
@@ -19,13 +19,13 @@
 
       enabled-extensions = [
         "backslide@codeisland.org"
+        "Battery-Health-Charging@maniacx.github.com"
         "blur-my-shell@aunetx"
         "caffeine@patapon.info"
         "fq@megh"
         "gnome-ui-tune@itstime.tech"
         # "gnordvpn-local@isopolito"
         "gsconnect@andyholmes.github.io"
-        "lockkeys@vaina.lt"
         "pano@elhan.io"
         "tiling-assistant@leleat-on-github"
       ];
