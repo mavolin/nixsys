@@ -37,12 +37,8 @@
         roboto-mono
         inter
         cm_unicode
-        (nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "JetBrainsMono"
-          ];
-        })
+        nerd-fonts.fira-code
+        nerd-fonts.jetbrains-mono
       ]
       ++ (lib.attrValues tex-gyre)
       ++ (lib.attrValues tex-gyre-math);

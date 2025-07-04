@@ -2,10 +2,10 @@
   description = "mavolin's nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -16,25 +16,28 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-    }@inputs:
+    }:
     let
       # Change base.nix to edit the most common settings.
       base = import ./base.nix;
+
+      overlayDir = ./overlays;
+      overlaysFromDir = builtins.map (file: import "${overlayDir}/${file}") (
+        builtins.attrNames (builtins.readDir overlayDir)
+      );
+
       unstable-pkgs = import nixpkgs-unstable {
         inherit (base) system;
-        config = {
-          allowUnfree = true;
-        };
+        config.allowUnfree = true;
+        overlays = overlaysFromDir;
       };
-      specialArgs = inputs // {
+      specialArgs = {
         inherit base;
         inherit unstable-pkgs;
       };
     in
     {
       formatter.${base.system} = nixpkgs.legacyPackages.${base.system}.nixfmt-rfc-style;
-
-      nixpkgs.overlays = [ (import ./overlays/1password.nix) ];
 
       nixosConfigurations = {
         ${base.hostname} = nixpkgs.lib.nixosSystem {
@@ -50,6 +53,8 @@
                 users.${base.username} = import ./user;
                 extraSpecialArgs = specialArgs;
               };
+
+              nixpkgs.overlays = overlaysFromDir;
             }
           ];
         };

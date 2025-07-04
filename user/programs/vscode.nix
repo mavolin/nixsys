@@ -1,22 +1,13 @@
-{ unstable-pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.vscode = {
     enable = true;
-    package = unstable-pkgs.vscodium;
+    package = pkgs.vscodium;
 
-    extensions =
-      with unstable-pkgs.vscode-extensions;
-      [
-        github.copilot
-        myriad-dreamin.tinymist
-      ]
-      ++ unstable-pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "intellij-idea-keybindings";
-          publisher = "k--kato";
-          version = "1.5.12";
-          sha256 = "sha256-khXO8zLwQcdqiJxFlgLQSQbVz2fNxFY6vGTuD1DBjlc=";
-        }
-      ];
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      github.copilot
+      myriad-dreamin.tinymist
+      k--kato.intellij-idea-keybindings
+    ];
   };
 }

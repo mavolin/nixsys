@@ -3,7 +3,8 @@
   home.packages =
     with pkgs.jetbrains;
     let
-      addPlugins = ide: extra: plugins.addPlugins ide ([ "github-copilot" ] ++ extra);
+      defaultPlugins = [ pkgs.jetbrains.plugins.github-copilot-fixed ];
+      addPlugins = ide: extra: plugins.addPlugins ide (defaultPlugins ++ extra);
     in
     [
       (addPlugins clion [ ])
