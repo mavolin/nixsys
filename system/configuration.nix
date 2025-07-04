@@ -12,7 +12,6 @@
     ./power-management.nix
     ./programs.nix
     ./services
-    ./systemd.nix
     ./users.nix
     ./xkb.nix
   ];
@@ -24,6 +23,7 @@
         "flakes"
       ];
       auto-optimise-store = true;
+      max-jobs = 12;
     };
     gc = {
       automatic = true;
