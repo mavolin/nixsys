@@ -31,9 +31,9 @@
         config.allowUnfree = true;
         overlays = overlaysFromDir;
       };
+
       specialArgs = {
-        inherit base;
-        inherit unstable-pkgs;
+        inherit base unstable-pkgs;
       };
     in
     {
@@ -53,7 +53,6 @@
                 users.${base.username} = import ./user;
                 extraSpecialArgs = specialArgs;
               };
-
               nixpkgs.overlays = overlaysFromDir;
             }
           ];
