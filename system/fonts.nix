@@ -10,6 +10,8 @@
         # gets installed as "Apple Color Emoji"
         emoji = [ "Apple Color Emoji" ];
       };
+
+      useEmbeddedBitmaps = true;
     };
 
     packages =
@@ -20,6 +22,7 @@
         dejavu_fonts
         liberation_ttf
         corefonts
+        cantarell-fonts
         noto-fonts
         ubuntu_font_family
         cascadia-code
