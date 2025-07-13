@@ -11,6 +11,7 @@
     gsconnect
     pano
     tiling-assistant
+    vitals
   ];
 
   dconf.settings = {
@@ -28,6 +29,7 @@
         "gsconnect@andyholmes.github.io"
         "pano@elhan.io"
         "tiling-assistant@leleat-on-github"
+        "Vitals@CoreCoding.com"
       ];
     };
 
@@ -59,6 +61,13 @@
       body-bg-color = "rgba(181,181,181,0.7)";
       body-font-family = "Cantarell";
       body-font-size = 14;
+    };
+
+    "org/gnome/shell/extensions/vitals" = {
+      icon-style = 1;
+      hot-sensors = [
+        "_memory_usage_" "_system_load_1m_" "__network-rx_max__" "_processor_usage_"
+      ];
     };
   };
 }
