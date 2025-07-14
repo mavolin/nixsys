@@ -27,8 +27,6 @@
     drawing
     drawio
     emote
-    # figma-linux
-    # figma-agent
     filezilla
     fortune # fortune cookie message cli
     lorem
@@ -58,7 +56,6 @@
     # nordvpn # todo: replace with nordvpn as soon as merged
     gnome-obfuscate # blur data in images, pdfs etc
     pdfslicer
-    peek # gif recorder
     pick-colour-picker
     powertop
     quadrapassel
@@ -70,6 +67,7 @@
     gnome-sudoku
     sushi # nautilus file preview
     texlive.combined.scheme-full
+    tinymist
     tldr
     typst
     # ventoy
