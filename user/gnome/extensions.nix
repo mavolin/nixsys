@@ -65,8 +65,15 @@
 
     "org/gnome/shell/extensions/vitals" = {
       icon-style = 1;
+      position-in-panel = 0;
       hot-sensors = [
-        "_memory_usage_" "_system_load_1m_" "__network-rx_max__" "_processor_usage_"
+        "_system_load_1m_"
+        "__temperature_avg__"
+        "_processor_usage_"
+        "_memory_usage_"
+        "__network-tx_max__"
+        "__network-rx_max__"
+        "_network_public_ip_"
       ];
     };
   };
