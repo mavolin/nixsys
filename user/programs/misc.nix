@@ -31,6 +31,7 @@
     filezilla
     fortune # fortune cookie message cli
     lorem
+    gcolor3
     geogebra6
     gimp
     gnumake
@@ -57,7 +58,6 @@
     # nordvpn # todo: replace with nordvpn as soon as merged
     gnome-obfuscate # blur data in images, pdfs etc
     pdfslicer
-    pick-colour-picker
     powertop
     quadrapassel
     rustdesk-flutter
