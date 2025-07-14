@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable-pkgs,
   lib,
   ...
 }:
@@ -67,9 +68,10 @@
     gnome-sudoku
     sushi # nautilus file preview
     texlive.combined.scheme-full
-    tinymist
+    unstable-pkgs.tinymist
     tldr
     typst
+    typstyle
     # ventoy
     virt-manager
     vlc
