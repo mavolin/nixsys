@@ -7,6 +7,7 @@
     ./git.nix
     ./jetbrains.nix
     ./modern-unix.nix
+    ./nautilus.nix
     ./ssh.nix
     ./starship.nix
     ./vscode.nix

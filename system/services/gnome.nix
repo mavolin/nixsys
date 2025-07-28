@@ -41,4 +41,13 @@
     gnome-weather
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # enable wayland support in chromium apps
+
+  # Nautilus settings
+
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "blackbox";
+  };
+
+  services.gnome.sushi.enable = true;
 }

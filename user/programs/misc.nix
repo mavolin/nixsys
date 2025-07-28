@@ -66,7 +66,6 @@
     signal-desktop
     spotify
     gnome-sudoku
-    sushi # nautilus file preview
     texlive.combined.scheme-full
     unstable-pkgs.tinymist
     tldr
@@ -81,8 +80,6 @@
     wl-clipboard # for emote
     xdotool
     zoom-us
-
-    nautilus-open-any-terminal
   ];
 
   #### PROGRAM OPTIONS ####
