@@ -2,6 +2,7 @@
   imports = [
     ./misc.nix
 
+    ./browsers.nix
     ./fish.nix
     ./git.nix
     ./jetbrains.nix
