@@ -1,8 +1,7 @@
 {
   base,
-  pkgs,
   ...
-}@inputs:
+}:
 {
   imports = [
     ./gnome

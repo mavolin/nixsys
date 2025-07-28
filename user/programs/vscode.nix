@@ -8,6 +8,7 @@
       github.copilot
       myriad-dreamin.tinymist
       k--kato.intellij-idea-keybindings
+      tomoki1207.pdf
     ];
   };
 }
