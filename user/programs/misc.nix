@@ -25,6 +25,7 @@
     dconf-editor
     ddrescue
     discord
+    dive
     drawing
     drawio
     emote
