@@ -9,6 +9,11 @@
     loader.timeout = 0;
     loader.efi.canTouchEfiVariables = true;
 
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "100%";
+    };
+
     kernelPackages = pkgs.linuxPackages_latest.extend (
       final: prev: {
         tuxedo-drivers = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).tuxedo-drivers;
