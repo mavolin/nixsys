@@ -1,7 +1,7 @@
 { base, ... }:
 {
   virtualisation.libvirtd = {
-     enable = true;
+    enable = true;
   };
   users.extraGroups.libvirtd.members = [ base.username ];
 }
