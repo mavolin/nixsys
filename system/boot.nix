@@ -9,9 +9,11 @@
     loader.timeout = 0;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = pkgs.linuxPackages_latest.extend (final: prev: {
-      tuxedo-drivers = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).tuxedo-drivers;
-    }); # todo: remove when tuxedo-drivers >= 4.13.0 is available in stable channel
+    kernelPackages = pkgs.linuxPackages_latest.extend (
+      final: prev: {
+        tuxedo-drivers = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).tuxedo-drivers;
+      }
+    ); # todo: remove when tuxedo-drivers >= 4.13.0 is available in stable channel
     kernelParams = [ "acpi.ec_no_wakeup=1" ];
   };
 }
