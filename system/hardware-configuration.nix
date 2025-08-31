@@ -33,6 +33,8 @@
 
   boot.initrd.luks.devices."crypt-nixos".device =
     "/dev/disk/by-uuid/e0d8cc03-79ea-4520-af8c-8d601d807b02";
+  boot.initrd.luks.devices."crypt-nixos".allowDiscards = true;
+  boot.initrd.luks.devices."crypt-nixos".bypassWorkqueues = true;
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/03FE-5411";
