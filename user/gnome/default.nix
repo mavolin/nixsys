@@ -112,8 +112,8 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Super>period";
-      command = "emote";
-      name = "Emote";
+      command = "smile";
+      name = "Emoji Picker";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Ctrl><Shift>space";
@@ -139,7 +139,6 @@
           pkg = pkgs._1password-gui;
           args = "--silent --ozone-platform=wayland";
         }
-        { pkg = pkgs.emote; }
         { pkg = pkgs.whatsapp-for-linux; }
       ];
 

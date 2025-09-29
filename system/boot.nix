@@ -17,6 +17,7 @@
     kernelPackages = pkgs.linuxPackages_latest.extend (
       final: prev: {
         tuxedo-drivers = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).tuxedo-drivers;
+        yt6801 = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).yt6801;
       }
     ); # todo: remove when tuxedo-drivers >= 4.13.0 is available in stable channel
     kernelParams = [

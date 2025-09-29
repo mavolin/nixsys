@@ -10,6 +10,7 @@
     # gnordvpn-local
     gsconnect
     pano
+    smile-complementary-extension
     tiling-assistant
     vitals
   ];
@@ -28,6 +29,7 @@
         # "gnordvpn-local@isopolito"
         "gsconnect@andyholmes.github.io"
         "pano@elhan.io"
+        "smile-extension@mijorus.it"
         "tiling-assistant@leleat-on-github"
         "Vitals@CoreCoding.com"
       ];
