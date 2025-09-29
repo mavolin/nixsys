@@ -29,7 +29,6 @@
     dive
     drawing
     drawio
-    emote
     filezilla
     fortune # fortune cookie message cli
     lorem
@@ -66,6 +65,7 @@
     samba
     scc
     signal-desktop
+    smile
     spotify
     gnome-sudoku
     texlive.combined.scheme-full
@@ -79,7 +79,6 @@
     video-trimmer
     wineWowPackages.stable
     winetricks
-    wl-clipboard # for emote
     xdotool
     zoom-us
   ];
