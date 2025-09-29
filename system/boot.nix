@@ -1,4 +1,9 @@
-{ pkgs, unstable-pkgs, ... }:
+{
+  config,
+  pkgs,
+  unstable-pkgs,
+  ...
+}:
 {
   boot = {
     loader.systemd-boot = {
@@ -14,6 +19,11 @@
         tuxedo-drivers = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).tuxedo-drivers;
       }
     ); # todo: remove when tuxedo-drivers >= 4.13.0 is available in stable channel
-    kernelParams = [ "acpi.ec_no_wakeup=1" ];
+    kernelParams = [
+      "acpi.ec_no_wakeup=1"
+      "nvme.noacpi=1"
+    ];
+
+    extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
   };
 }
