@@ -21,6 +21,16 @@
     functions = {
       fish_greeting = "fortune";
 
+      run = ''
+        set pkg $argv[1]
+        if test -z "$pkg"
+          echo "Usage: run <package>"
+          return 1
+        end
+
+        nix run "nixpkgs#$pkg"
+      '';
+
       reos = ''
         pushd /home/${base.username}/nixsys
 
