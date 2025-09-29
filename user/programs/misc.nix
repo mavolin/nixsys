@@ -19,6 +19,7 @@
     bottles
     gnome-boxes
     gnome-chess
+    calibre
     ciano # converter
     contrast
     collision # hash checker
