@@ -26,19 +26,22 @@
         noto-fonts
         ubuntu_font_family
         cascadia-code
-        fira
-        fira-mono
         fira-code
+        fira-mono
+        fira-sans
+        go-font
+        inter
         jetbrains-mono
         meslo-lg
         merriweather
         merriweather-sans
         noto-fonts-monochrome-emoji
         open-sans
+        rubik
         roboto
         roboto-slab
         roboto-mono
-        inter
+
         cm_unicode
         nerd-fonts.fira-code
         nerd-fonts.jetbrains-mono

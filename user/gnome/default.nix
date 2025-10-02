@@ -22,8 +22,8 @@
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
 
-    font-name = "Fira Sans 11";
-    document-font-name = "Fira Sans 11";
+    font-name = "Inter 11";
+    document-font-name = "Inter 11";
     monospace-font-name = "JetBrains Mono 10";
   };
 
