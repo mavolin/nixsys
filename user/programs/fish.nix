@@ -16,6 +16,9 @@
       sshx = "ssh root@x-lan.de";
       sshr = "ssh root@rocketman.mavolin.co";
       sshm = "ssh root@moonrover.mavolin.co";
+
+      i = "idea-ultimate .";
+      g = "goland .";
     };
 
     functions = {
