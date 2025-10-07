@@ -3,6 +3,13 @@
   fonts = {
     fontconfig = {
       enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        autohint = true;
+        style = "none";
+      };
+      subpixel.rgba = "rgb";
 
       defaultFonts = {
         monospace = [ "JetBrains Mono" ];
