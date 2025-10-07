@@ -24,7 +24,5 @@
       "acpi.ec_no_wakeup=1"
       "nvme.noacpi=1"
     ];
-
-    extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
   };
 }
