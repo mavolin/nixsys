@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   unstable-pkgs,
   ...
@@ -20,9 +19,6 @@
         yt6801 = (unstable-pkgs.linuxPackagesFor pkgs.linuxPackages_latest.kernel).yt6801;
       }
     ); # todo: remove when tuxedo-drivers >= 4.13.0 is available in stable channel
-    kernelParams = [
-      "acpi.ec_no_wakeup=1"
-      "nvme.noacpi=1"
-    ];
+    kernelParams = [ "acpi.ec_no_wakeup=1" ];
   };
 }
