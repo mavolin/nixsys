@@ -34,6 +34,16 @@
         nix run "nixpkgs#$pkg" -- $argv[2..-1]
       '';
 
+      ns = ''
+        set pkg $argv[1]
+        if test -z "$pkg"
+          echo "Usage: ns <package>"
+          return 1
+        end
+
+        nix shell "nixpkgs#$pkg"
+      '';
+
       reos = ''
         pushd /home/${base.username}/nixsys
 
