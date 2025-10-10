@@ -24,10 +24,10 @@
     functions = {
       fish_greeting = "fortune";
 
-      run = ''
+      nr = ''
         set pkg $argv[1]
         if test -z "$pkg"
-          echo "Usage: run <package>"
+          echo "Usage: nr <package>"
           return 1
         end
 
