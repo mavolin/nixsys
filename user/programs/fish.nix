@@ -31,7 +31,7 @@
           return 1
         end
 
-        nix run "nixpkgs#$pkg"
+        nix run "nixpkgs#$pkg" -- $argv[2..-1]
       '';
 
       reos = ''
