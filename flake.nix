@@ -36,6 +36,9 @@
 
       specialArgs = {
         inherit base unstable-pkgs;
+        derivations = import ./derivations {
+          pkgs = nixpkgs.legacyPackages.${base.system};
+        };
       };
     in
     {

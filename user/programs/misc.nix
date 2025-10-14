@@ -1,4 +1,5 @@
 {
+  derivations,
   pkgs,
   unstable-pkgs,
   lib,
@@ -61,6 +62,7 @@
     pdfslicer
     powertop
     quadrapassel
+    derivations.renew
     rustdesk-flutter
     samba
     scc

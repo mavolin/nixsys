@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Renew
+Exec=$out/bin/renew
+Icon=renew
+Categories=Development;Education;
+Terminal=false
+Icon=renew
