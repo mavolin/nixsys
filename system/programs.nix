@@ -33,6 +33,9 @@
     mode = "0644";
   };
 
+  programs.adb.enable = true;
+  users.users.${base.username}.extraGroups = [ "adbusers" "kvm" ];
+
   services.dbus.enable = true;
 
   programs.steam.enable = true;
