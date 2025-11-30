@@ -131,9 +131,9 @@
       bak = ''
         set service_name restic-backups-${base.backup.server}.service
 
-        sudo systemctl start $service_name
         sudo journalctl -f -u $service_name &
         set journalctl_pid $last_pid
+        sudo systemctl start $service_name
 
         while systemctl is-active --quiet $service_name
           sleep 1
