@@ -44,7 +44,9 @@
     gparted
     gthumb
     impression
-    inkscape
+    (inkscape-with-extensions.override {
+      inkscapeExtensions = with inkscape-extensions; [ inkstitch ];
+    })
     pstoedit # dep of inkscape, for opening .eps
     jellyfin-media-player
     john
