@@ -22,6 +22,11 @@
           from = 24727;
           to = 24727;
         }
+        {
+          # Dev 8080
+          from = 8080;
+          to = 8085;
+        }
       ];
       allowedUDPPortRanges = [
         {

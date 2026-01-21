@@ -1,3 +1,4 @@
-{pkgs}: {
-  renew = pkgs.callPackage ./renew {};
+{ pkgs }:
+{
+  renew = pkgs.callPackage ./renew { };
 }

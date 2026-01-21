@@ -34,7 +34,10 @@
   };
 
   programs.adb.enable = true;
-  users.users.${base.username}.extraGroups = [ "adbusers" "kvm" ];
+  users.users.${base.username}.extraGroups = [
+    "adbusers"
+    "kvm"
+  ];
 
   services.dbus.enable = true;
 
