@@ -41,7 +41,7 @@
           return 1
         end
 
-        nix shell "nixpkgs#$pkg"
+        nix shell "nixpkgs#$pkg" -c fish
       '';
 
       reos = ''
@@ -67,7 +67,6 @@
         reos
         popd
       '';
-      nixsh = "nix shell nixpkgs#$argv[1]";
 
       goget = "go get (echo $argv[1] | sed 's|https://||g')";
 
