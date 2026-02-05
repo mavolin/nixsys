@@ -1,5 +1,8 @@
-{ base, ... }:
+{ base, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    openconnect
+  ];
   networking = {
     hostName = base.hostname;
     extraHosts = ''

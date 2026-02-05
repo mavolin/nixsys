@@ -142,6 +142,14 @@
 
         kill $journalctl_pid
       '';
+
+      uhhvpn =''
+        sudo openconnect https://vpn.rrz.uni-hamburg.de \
+          # So SSO works
+          --useragent "AnyConnect-compatible OpenConnect VPN agent" \
+          # otherwise fails with 404
+          --gnutls-priority="NORMAL:-VERS-ALL:+VERS-TLS1.2:+RSA:+AES-128-CBC:+SHA1"
+      '';
     };
   };
 
