@@ -74,7 +74,6 @@
     gnome-sudoku
     texlive.combined.scheme-full
     unstable-pkgs.tinymist
-    tldr
     typst
     typstyle
     # ventoy

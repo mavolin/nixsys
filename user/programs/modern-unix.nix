@@ -8,7 +8,7 @@
     duf
     ripgrep
     jq
-    tldr
+    tealdeer
     gtop
     gping
     dogdns
