@@ -130,7 +130,8 @@
       bak = ''
         set service_name restic-backups-${base.backup.server}.service
 
-        sudo journalctl -f -u $service_name &
+        sudo -v
+        env SYSTEMD_COLORS=true journalctl --no-pager -f -u $service_name &
         set journalctl_pid $last_pid
         sudo systemctl start $service_name
 

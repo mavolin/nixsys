@@ -4,7 +4,7 @@ let
 in
 {
   services.restic.backups.${base.backup.server} = {
-    repository = "rest:https://${base.backup.user}:${restPasswd}@${base.backup.server}/${base.hostname}";
+    repository = "rest:https://${base.backup.user}:${restPasswd}@${base.backup.server}/${base.backup.user}";
     passwordFile = builtins.toFile "restic_passwd" (builtins.readFile ../../secrets/restic_passwd);
     paths = [
       "/home/${base.username}"
