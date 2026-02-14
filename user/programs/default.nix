@@ -10,7 +10,7 @@
     ./nautilus.nix
     ./ssh.nix
     ./starship.nix
-    ./vscode.nix
+    ./usbguard.nix
     ./vscode.nix
   ];
 }
