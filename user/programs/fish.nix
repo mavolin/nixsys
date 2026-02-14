@@ -15,7 +15,7 @@
 
       sshx = "ssh root@x-lan.de";
       sshr = "ssh root@rocketman.mavolin.co";
-      sshm = "ssh root@moonrover.mavolin.co";
+      sshm = "ssh -p 2233 root@moonrover.mavolin.co";
 
       i = "idea-ultimate .";
       g = "goland .";
@@ -144,7 +144,7 @@
         kill $journalctl_pid
       '';
 
-      uhhvpn =''
+      uhhvpn = ''
         sudo openconnect https://vpn.rrz.uni-hamburg.de \
           # So SSO works
           --useragent "AnyConnect-compatible OpenConnect VPN agent" \
