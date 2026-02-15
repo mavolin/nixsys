@@ -23,10 +23,10 @@
       # Change base.nix to edit the most common settings.
       base = import ./base.nix;
 
-      overlayDir = ./overlays;
-      overlaysFromDir = builtins.map (file: import "${overlayDir}/${file}") (
-        builtins.attrNames (builtins.readDir overlayDir)
-      );
+      overlayDirPath = ./overlays;
+      overlayDir = builtins.readDir overlayDirPath;
+      overlaysDirFiles = builtins.filter (name: (builtins.match "\.nix$" name) != null) (builtins.attrNames overlayDir);
+      overlaysFromDir = builtins.map (file: import "${overlayDir}/${file}") overlaysDirFiles;
 
       unstable-pkgs = import nixpkgs-unstable {
         inherit (base) system;

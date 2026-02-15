@@ -3,7 +3,7 @@
   home.packages =
     with pkgs.jetbrains;
     let
-      defaultPlugins = [ "github-copilot" ];
+      defaultPlugins = [ "github-copilot--your-ai-pair-programmer" ];
       addPlugins = ide: extra: plugins.addPlugins ide (defaultPlugins ++ extra);
     in
     [
