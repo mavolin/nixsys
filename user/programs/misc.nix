@@ -51,7 +51,7 @@
     jellyfin-media-player
     john
     killall
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
     less
     libreoffice-fresh
     gnome-mahjongg
@@ -62,6 +62,7 @@
     # nordvpn # todo: replace with nordvpn as soon as merged
     gnome-obfuscate # blur data in images, pdfs etc
     pdfslicer
+    pitivi
     powertop
     quadrapassel
     derivations.renew

@@ -139,7 +139,6 @@
           pkg = pkgs._1password-gui;
           args = "--silent --ozone-platform=wayland";
         }
-        { pkg = pkgs.whatsapp-for-linux; }
       ];
 
       mkAutostartEntries =

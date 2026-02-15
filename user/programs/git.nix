@@ -25,23 +25,33 @@ in
     enable = true;
     includes =
       let
-        mkInclude = url: {
-          path = "~/Code/${url}/.gitconfig";
-          condition = "gitdir:~/Code/${url}/";
+        mkCodeInclude = server: {
+          condition = "gitdir:~/Code/${server.url}/";
+          contents = mkConfig server;
+        };
+        mkNixsysInclude = server: {
+          condition = "gitdir:~/nixsys/";
+          contents = mkConfig server;
+        };
+        mkConfig = server: {
+          user = {
+            name = server.username;
+            email = server.email;
+            signingkey = server.signingkey;
+          };
+          gpg = {
+            format = "ssh";
+            ssh = {
+              program = "${pkgs._1password-gui + "/share/1password/op-ssh-sign"}";
+            };
+          };
+          commit = {
+            gpgsign = true;
+          };
         };
       in
-      (map (server: mkInclude server.url) gitSettings)
-      ++ (
-        if githubServer != null then
-          [
-            {
-              path = "~/nixsys/.gitconfig";
-              condition = "gitdir:~/nixsys/";
-            }
-          ]
-        else
-          [ ]
-      );
+      (map mkCodeInclude gitSettings)
+      ++ (lib.optional (githubServer != null) (mkNixsysInclude githubServer));
     ignores = [
       ".direnv/"
       "testlocal/"
@@ -49,49 +59,20 @@ in
       "todo"
       ".gitconfig"
     ];
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "v0";
       };
+      fetch = {
+        prune = true;
+      };
       pull = {
         ff = "only";
+        rebase = true;
       };
       push = {
         autoSetupRemote = true;
       };
     };
   };
-
-  home.file =
-    let
-      mkCfg =
-        {
-          name,
-          email,
-          signingkey,
-          ...
-        }:
-        ''
-          [user]
-          name = ${name}
-          email = ${email}
-          signingkey = ${signingkey}
-
-          [gpg]
-          format = ssh
-
-          [gpg "ssh"]
-          program = "${pkgs._1password-gui + "/share/1password/op-ssh-sign"}"
-
-          [commit]
-          gpgsign = true
-        '';
-    in
-    (builtins.listToAttrs (
-      map (server: {
-        name = "Code/${server.url}/.gitconfig";
-        value.text = mkCfg server;
-      }) gitSettings
-    ))
-    // (if githubServer != null then { "nixsys/.gitconfig".text = mkCfg githubServer; } else { });
 }

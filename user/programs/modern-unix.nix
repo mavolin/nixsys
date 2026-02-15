@@ -4,7 +4,7 @@
     bat
     lsd
     delta
-    du-dust
+    dust
     duf
     ripgrep
     jq

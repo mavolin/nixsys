@@ -3,17 +3,14 @@
   services.xserver = {
     enable = true;
     excludePackages = with pkgs; [ xterm ];
-
-    displayManager = {
-      gdm = {
-        enable = true;
-      };
-    };
-    desktopManager.gnome.enable = true;
   };
-  services.displayManager.autoLogin = {
-    enable = base.autoLogin;
-    user = base.username;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager = {
+    gdm.enable = true;
+    autoLogin = {
+      enable = base.autoLogin;
+      user = base.username;
+    };
   };
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 

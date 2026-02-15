@@ -31,7 +31,7 @@
         corefonts
         cantarell-fonts
         noto-fonts
-        ubuntu_font_family
+        ubuntu-classic
         cascadia-code
         fira-code
         fira-mono
@@ -53,7 +53,7 @@
         nerd-fonts.fira-code
         nerd-fonts.jetbrains-mono
       ]
-      ++ (lib.attrValues tex-gyre)
-      ++ (lib.attrValues tex-gyre-math);
+      ++ (lib.filter lib.isDerivation (lib.attrValues tex-gyre))
+      ++ (lib.filter lib.isDerivation (lib.attrValues tex-gyre-math));
   };
 }
