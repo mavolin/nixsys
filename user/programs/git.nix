@@ -75,4 +75,6 @@ in
       };
     };
   };
+
+  programs.mergiraf.enable = true;
 }
