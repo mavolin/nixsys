@@ -16,7 +16,7 @@ let
   # ]
   #
   # it's gitignored, bc i like my privacy
-  gitSettings = import ./git-settings.nix;
+  gitSettings = import ../../secrets/git-settings.nix;
 
   githubServer = lib.lists.findFirst (server: server.url == "github.com") null gitSettings;
 in
