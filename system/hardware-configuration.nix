@@ -13,43 +13,35 @@
   ];
 
   boot.initrd.availableKernelModules = [
+    "nvme"
     "xhci_pci"
     "thunderbolt"
-    "nvme"
-    "usb_storage"
     "usbhid"
-    "sd_mod"
     "sdhci_pci"
-    "ahci"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/618ddfbf-01a9-4477-8272-d75b1a5351c9";
+    device = "/dev/mapper/crypt-nixos";
     fsType = "ext4";
   };
 
   boot.initrd.luks.devices."crypt-nixos".device =
     "/dev/disk/by-uuid/e0d8cc03-79ea-4520-af8c-8d601d807b02";
-  boot.initrd.luks.devices."crypt-nixos".allowDiscards = true;
-  boot.initrd.luks.devices."crypt-nixos".bypassWorkqueues = true;
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/03FE-5411";
     fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
