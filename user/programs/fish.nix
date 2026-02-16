@@ -13,9 +13,9 @@
     shellAliases = {
       sdocker = "sudo systemctl start docker.service";
 
-      sshx = "ssh root@x-lan.de";
-      sshr = "ssh root@rocketman.mavolin.co";
-      sshm = "ssh -p 2233 root@moonrover.mavolin.co";
+      sshx = "ssh work";
+      sshr = "ssh rocketman";
+      sshm = "ssh moonrover";
 
       i = "idea-ultimate .";
       g = "goland .";
@@ -48,21 +48,19 @@
         pushd /home/${base.username}/nixsys
 
         # so nix let's us use the git-settings.nix file
-        mv user/programs/.gitignore user/programs/.gitignore.old
-        git add user/programs/git-settings.nix
-        git add secrets/
+        mv .gitignore .gitignore.old
+        git add -f secrets/
 
         sudo nixos-rebuild switch --flake .
 
-        mv user/programs/.gitignore.old user/programs/.gitignore
-        git reset user/programs/git-settings.nix --quiet
+        mv .gitignore.old .gitignore
         git reset secrets/ --quiet
 
         popd
       '';
       upos = ''
+        sudo -v || exit $status # ensure we have sudo so we don't update for nothing
         pushd /home/${base.username}/nixsys
-        sudo echo -n || exit $status # ensure we have sudo so we don't update for nothing
         nix flake update
         reos
         popd
