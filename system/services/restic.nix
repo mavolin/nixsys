@@ -1,11 +1,11 @@
 { base, pkgs, ... }:
 let
-  restPasswd = builtins.readFile ../../secrets/restic_rest_passwd;
+  restPasswd = builtins.readFile ../../secrets/restic/rest_passwd;
 in
 {
   services.restic.backups.${base.backup.server} = {
     repository = "rest:https://${base.backup.user}:${restPasswd}@${base.backup.server}/${base.backup.user}";
-    passwordFile = builtins.toFile "restic_passwd" (builtins.readFile ../../secrets/restic_passwd);
+    passwordFile = builtins.toFile "restic_passwd" (builtins.readFile ../../secrets/restic/passwd);
     paths = [
       "/home/${base.username}"
     ];
@@ -52,7 +52,7 @@ in
             --title "Backup failed" \
             --tags warning \
             --priority high \
-            --token ${builtins.readFile ../../secrets/restic_ntfy_token} \
+            --token ${builtins.readFile ../../secrets/restic/ntfy_token} \
             ${base.backup.ntfy.url}/${base.backup.ntfy.topic} "$(journalctl -u ${backup-service} -o cat -I)"
         '';
       };

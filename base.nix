@@ -16,14 +16,14 @@ rec {
   backup = {
     # In order for backups to work, a restic rest server must be running
     # on the host specified below.
-    # Additionally, you need to place a restic_passwd with the encryption
-    # password and a restic_rest_passwd with the rest server password in
-    # secrets.
+    # Additionally, you need to place a file named passwd with the encryption
+    # password and a file named rest_passwd with the rest server password in
+    # secrets/restic.
     enabled = true;
     server = "rocketman.backup.mavolin.co";
     user = hostname;
     ntfy = {
-      # needs a secrets/restic_ntfy_token
+      # needs a secrets/restic/ntfy_token
       enabled = true;
       url = "https://ntfy.mavolin.co";
       topic = "backup";
