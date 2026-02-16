@@ -17,7 +17,7 @@
       sshr = "ssh rocketman";
       sshm = "ssh moonrover";
 
-      i = "idea-ultimate .";
+      i = "idea .";
       g = "goland .";
     };
 
@@ -48,12 +48,10 @@
         pushd /home/${base.username}/nixsys
 
         # so nix let's us use the git-settings.nix file
-        mv .gitignore .gitignore.old
         git add -f secrets/
 
         sudo nixos-rebuild switch --flake .
 
-        mv .gitignore.old .gitignore
         git reset secrets/ --quiet
 
         popd

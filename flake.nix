@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
+      lanzaboote,
     }:
     let
       # Change base.nix to edit the most common settings.
@@ -54,6 +59,7 @@
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
             nixos-hardware.nixosModules.tuxedo-infinitybook-pro14-gen9-amd
+            lanzaboote.nixosModules.lanzaboote
             {
               home-manager = {
                 useGlobalPkgs = true;
