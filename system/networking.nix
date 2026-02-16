@@ -10,7 +10,15 @@
       127.0.0.1 b.local
       127.0.0.1 c.local
     '';
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openconnect
+        networkmanager-openvpn
+        networkmanager-vpnc
+      ];
+      wifi.backend = "iwd";
+    };
 
     firewall = {
       enable = true;

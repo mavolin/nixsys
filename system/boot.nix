@@ -19,7 +19,10 @@
       efi.canTouchEfiVariables = true;
     };
 
-    kernelParams = [ "acpi.ec_no_wakeup=1" ];
+    kernelParams = [
+      "acpi.ec_no_wakeup=1"
+      "amdgpu.dcdebugmask=0x10"
+    ];
 
     initrd.luks.devices."crypt-nixos" = {
       allowDiscards = true;

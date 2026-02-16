@@ -57,7 +57,6 @@
     gnome-mahjongg
     meld
     minder
-    networkmanager-openconnect
     gnome-nettool
     # nordvpn # todo: replace with nordvpn as soon as merged
     gnome-obfuscate # blur data in images, pdfs etc
