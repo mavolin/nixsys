@@ -25,7 +25,9 @@
 
       overlayDirPath = ./overlays;
       overlayDir = builtins.readDir overlayDirPath;
-      overlaysDirFiles = builtins.filter (name: (builtins.match "\.nix$" name) != null) (builtins.attrNames overlayDir);
+      overlaysDirFiles = builtins.filter (name: (builtins.match "\.nix$" name) != null) (
+        builtins.attrNames overlayDir
+      );
       overlaysFromDir = builtins.map (file: import "${overlayDir}/${file}") overlaysDirFiles;
 
       unstable-pkgs = import nixpkgs-unstable {

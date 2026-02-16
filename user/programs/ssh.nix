@@ -7,6 +7,7 @@
       "*" = {
         identityAgent = "~/.1password/agent.sock";
       };
-    } // import ../../secrets/ssh-hosts.nix;
+    }
+    // import ../../secrets/ssh-hosts.nix;
   };
 }
