@@ -17,7 +17,6 @@
         networkmanager-openvpn
         networkmanager-vpnc
       ];
-      wifi.backend = "iwd";
     };
 
     firewall = {
