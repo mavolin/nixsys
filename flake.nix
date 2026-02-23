@@ -13,6 +13,28 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Ad Blocking
+    adb-StevenBlack-unified = {
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+      flake = false;
+    };
+    adb-StevenBlack-fakenews = {
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts";
+      flake = false;
+    };
+    adb-AdGuardDNS = {
+      url = "https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardDNS.txt";
+      flake = false;
+    };
+    adb-anudeepNL = {
+      url = "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt";
+      flake = false;
+    };
+    adb-EasyList = {
+      url = "https://v.firebog.net/hosts/Easylist.txt";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,6 +45,11 @@
       nixos-hardware,
       home-manager,
       lanzaboote,
+      adb-StevenBlack-unified,
+      adb-StevenBlack-fakenews,
+      adb-AdGuardDNS,
+      adb-anudeepNL,
+      adb-EasyList,
     }:
     let
       # Change base.nix to edit the most common settings.
@@ -35,6 +62,14 @@
       );
       overlaysFromDir = builtins.map (file: import "${overlayDir}/${file}") overlaysDirFiles;
 
+      adBlockListFiles = [
+        adb-StevenBlack-unified
+        adb-StevenBlack-fakenews
+        adb-AdGuardDNS
+        adb-anudeepNL
+        adb-EasyList
+      ];
+
       unstable-pkgs = import nixpkgs-unstable {
         inherit (base) system;
         config.allowUnfree = true;
@@ -45,6 +80,7 @@
         inherit base unstable-pkgs;
         derivations = import ./derivations {
           pkgs = nixpkgs.legacyPackages.${base.system};
+          inherit adBlockListFiles;
         };
       };
     in
