@@ -7,13 +7,8 @@
 {
   environment.systemPackages = with pkgs; [
     openconnect
+    networkmanagerapplet
   ];
-  environment.etc."resolv.unbound.conf".text = ''
-    nameserver 127.0.0.1
-    nameserver 1.1.1.1
-    nameserver 9.9.9.9
-    options edns0
-  '';
   networking = {
     hostName = base.hostname;
     hostFiles = [
@@ -76,26 +71,6 @@
         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
       '';
-    };
-  };
-
-  services.unbound = {
-    enable = true;
-    settings = {
-      server = {
-        root-hints = "${pkgs.dns-root-data}/root.hints";
-      };
-      forward-zone = [
-        {
-          name = ".";
-          forward-tls-upstream = true;
-          forward-first = false;
-          forward-addr = [
-            "194.242.2.2@853"
-            "9.9.9.9@853"
-          ];
-        }
-      ];
     };
   };
 }
